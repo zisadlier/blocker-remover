@@ -1,0 +1,28 @@
+{
+	"manifest_version": 3,
+	"name": "Blocker Remover",
+	"description": "Removes popups blocking access to web pages",
+	"version": "0.1.0",
+	"permissions": ["activeTab", "scripting", "declarativeContent", "storage"],
+	"action": {
+		"default_popup": "popup.html",
+		"default_icon": "logo.png"
+	},
+	"background": {
+		"service_worker": "service-worker.js"
+	},
+	"content_scripts": [
+		{ 
+			"matches": ["https://*/*"],
+			"js": ["content-script.js"]
+		}
+	],
+	"commands": {
+		"remove-blockers": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+X"
+			},
+			"description": "Removes anything blocking the current page"
+		}
+	}
+}
